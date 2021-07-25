@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tan</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="static/css/login.css" th:href="@{/css/login.css}" />
 </head>
 <body>
@@ -34,7 +34,7 @@
                     <span>Bienvenido</span>
                     <input type="email" class="form-iniciar" placeholder="Email" name="email">
                     <input type="password" class="form-iniciar" placeholder="Password" name="password">
-                    <a href="#">Olvidaste tu contraseña?</a>
+                    <a th:href="@{/recuperarPassword}">Olvidaste tu contraseña?</a>
                     <button type="submit">Iniciar sesion</button>
                 </form>
             </div>

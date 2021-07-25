@@ -24,14 +24,6 @@ public class Empleado {
 	private List<Telefono> telefono;
 	private String password;
 	
-	
-	
-
-	
-	
-
-
-
 	public Empleado(String nombre, String apellido, Integer cedula, String email, Integer salario, String horario,
 			List<Telefono> telefono, String password) {
 		super();
@@ -45,17 +37,9 @@ public class Empleado {
 		this.password = password;
 	}
 
-
-
-
-
 	public Empleado() {
 		
 	}
-	
-	
-
-	
 	
 	public String getPassword() {
 		return password;
@@ -68,23 +52,14 @@ public class Empleado {
 	}
 
 
-	
-
 	public List<Telefono> getTelefono() {
 		return telefono;
 	}
 
 
-
-
-
 	public void setTelefono(List<Telefono> telefono) {
 		this.telefono = telefono;
 	}
-
-
-
-
 
 	public String getNombre() {
 		return nombre;
@@ -151,11 +126,6 @@ public class Empleado {
 	public String toString() {
 		return "Empleado [nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", email=" + email
 				+ ", salario=" + salario + ", horario=" + horario + ", telefono=" + telefono + "]";
-	}
-	
-	
-	
-	
-	
+	}	
 
 }

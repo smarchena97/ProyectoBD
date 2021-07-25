@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uniquindio.interfaceService.IClienteService;
 import com.uniquindio.interfaceService.IEmpleadoService;
+import com.uniquindio.interfaceService.IProductoService;
 import com.uniquindio.modelo.Cliente;
 import com.uniquindio.modelo.Empleado;
 import com.uniquindio.modelo.Persona;
+import com.uniquindio.modelo.PersonaPassword;
+import com.uniquindio.modelo.Producto;
 
 @Controller
 @RequestMapping
@@ -27,6 +30,9 @@ public class Controlador {
 	
 	@Autowired
 	private IClienteService serviceCliente;
+	
+	@Autowired
+	private IProductoService serviceProducto;
 	
 	@PostMapping("/login")
 	public String logIn( @Validated Persona miE,  Model model) {
@@ -100,7 +106,22 @@ public class Controlador {
 	}
 	
 	@GetMapping("/productos")
-	public String mostrarProductos(Model model) {
+	public String listarProductos(Model model) {
+		
+		List<Producto> producto = serviceProducto.listarProductos();
+		model.addAttribute("Productos", producto);
 		return "productos";
+	}
+	
+	@GetMapping("/recuperarPassword")
+	public String recuperarPw(Model model) {
+		return "recuperarPassword";
+	}
+	
+	@PostMapping("/recuperarPw")
+	public String recuperarPw(@Validated PersonaPassword e, Model model) {
+		Cliente miC = serviceCliente.listarClienteId(e.getCedula());
+		System.out.println(miC.getPassword());
+		return "redirect:/cliente";
 	}
 }

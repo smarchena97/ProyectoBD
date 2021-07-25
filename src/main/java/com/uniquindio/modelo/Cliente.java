@@ -89,8 +89,9 @@ public class Cliente {
 	public void setTelefono(List<Telefono> telefono) {
 		this.telefono = telefono;
 	}
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", cedula=" + cedula + ", email=" + email + ", apellido=" + apellido
+				+ ", password=" + password + ", telefono=" + telefono + "]";
+	}
 }

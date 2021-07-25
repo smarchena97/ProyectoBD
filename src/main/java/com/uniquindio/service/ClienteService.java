@@ -1,6 +1,7 @@
 package com.uniquindio.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.uniquindio.interfaceService.IClienteService;
 import com.uniquindio.interfaces.ICliente;
 import com.uniquindio.modelo.Cliente;
-import com.uniquindio.modelo.Empleado;
 
 @Service
 public class ClienteService implements IClienteService{
@@ -39,6 +39,18 @@ public class ClienteService implements IClienteService{
 			}
 		}
 		return centi;
+	}
+	
+	
+	@Override
+	public Cliente listarClienteId(Integer id) {
+		List<Cliente> miE = (List<Cliente>) data.findAll();
+		for (Cliente cliente: miE) {
+			if (cliente.getCedula().equals(id)) {
+				return cliente;
+			}
+		}
+		return null;
 	}
 
 }
