@@ -13,24 +13,26 @@
         <h2 class="h2-section">Formulario de inicio de sesion</h2>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form th:action="@{/saveCliente}" method="POST" class="col-12">
                     <h1>Crear cuenta</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
                         <a href="#" class="social"><i class="fa fa-twitter"></i></a>
                     </div>
                     <span>Crea tu cuenta facil</span>
-                    <input type="text" placeholder="Nombre" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Contraseña" />
-                    <button>Registrar</button>
+                    <input type="text" class="form-iniciar" placeholder="Nombre" name="nombre">
+                    <input type="text" class="form-iniciar" placeholder="Apellido" name="apellido">
+                    <input type="text" class="form-iniciar" placeholder="Cedula" name="cedula">
+                    <input type="email" class="form-iniciar" placeholder="Email" name="email">
+                    <input type="password" class="form-iniciar" placeholder="Contraseña" name="password">
+                    <button type="submit">Registrar</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form th:action="@{/login}" method="POST" class="col-12">
                     <h1>Iniciar Sesion</h1>
                     <span>Bienvenido</span>
-                    <input type="text" class="form-iniciar" placeholder="Email" name="email">
+                    <input type="email" class="form-iniciar" placeholder="Email" name="email">
                     <input type="password" class="form-iniciar" placeholder="Password" name="password">
                     <a href="#">Olvidaste tu contraseña?</a>
                     <button type="submit">Iniciar sesion</button>

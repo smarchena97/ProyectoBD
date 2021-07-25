@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uniquindio.interfaceService.IClienteService;
 import com.uniquindio.interfaceService.IEmpleadoService;
+import com.uniquindio.modelo.Cliente;
 import com.uniquindio.modelo.Empleado;
 import com.uniquindio.modelo.Persona;
 
@@ -31,18 +32,15 @@ public class Controlador {
 	public String logIn( @Validated Persona miE,  Model model) {
 		boolean verify = service.verificar(miE.getEmail(), miE.getpassword());
 		if(verify == true) {
-			return "redirect:/listar";
+			return "redirect:/empleado";
 		}else {
 			boolean verifyCliente = serviceCliente.verificarCliente(miE.getEmail(), miE.getpassword());
 			if(verifyCliente == true) {
-				return "redirect:/listar";
+				return "redirect:/cliente";
 			}
-			System.out.println("clonaito");
 			return "redirect:/inicio";
 		}
 		
-//		model.addAttribute("Empleados", empleado);
-
 	}
 	
 	@GetMapping("/inicio")
@@ -72,6 +70,12 @@ public class Controlador {
 		return "redirect:/listar";
 	}
 	
+	@PostMapping("/saveCliente")
+	public String save(@Validated Cliente e, Model model) {
+		serviceCliente.saveCliente(e);
+		return "redirect:/cliente";
+	}
+	
 	@GetMapping("/editar/{cedula}")
 	public String editar(@PathVariable Integer cedula,Model model) {
 		Optional<Empleado> miE = service.listarId(cedula);
@@ -84,5 +88,19 @@ public class Controlador {
 		service.delete(cedula);
 		return "redirect:/listar";
 	}
-
+	
+	@GetMapping("/cliente")
+	public String visualCliente(Model model) {
+		return "vistaCliente";
+	}
+	
+	@GetMapping("/empleado")
+	public String visualEmpleado(Model model) {
+		return "vistaEmpleado";
+	}
+	
+	@GetMapping("/productos")
+	public String mostrarProductos(Model model) {
+		return "productos";
+	}
 }
