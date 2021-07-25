@@ -37,6 +37,7 @@ public class Controlador {
 			if(verifyCliente == true) {
 				return "redirect:/listar";
 			}
+			System.out.println("clonaito");
 			return "redirect:/inicio";
 		}
 		
